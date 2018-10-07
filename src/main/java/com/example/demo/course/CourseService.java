@@ -15,9 +15,9 @@ public class CourseService{
     /**
      * @return the courses
      */
-    public List<Course> getCourses() {
+    public List<Course> getCourses(String topicId) {
         List<Course> courses = new ArrayList<>();
-        courseRepository.findAll()
+        courseRepository.findByTopicId(topicId)
         .forEach(courses::add);
         return courses;
     }
@@ -30,7 +30,7 @@ public class CourseService{
         courseRepository.save(course);
     }
     
-    public void updateCourse(Course course, String id) {
+    public void updateCourse(Course course) {
         courseRepository.save(course);
 	}
 
